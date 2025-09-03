@@ -1,4 +1,4 @@
-package ch2;
+package chap02.excercise;
 
 public class EchoTestDrive {
   public static void main(String[] args) {
