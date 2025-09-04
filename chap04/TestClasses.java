@@ -23,12 +23,13 @@ class AddThing {
 
 // Demonstrates local variable rules
 class Foo {
-    public void go() {
-        int x;
+    public int go() {
+        int x = 6;
         // Local variables (like 'x') MUST be initialized before use!
         // If you uncomment the line below, it will NOT compile,
         // because 'x' has no value assigned yet.
-        // int z = x + 3;
+        int z = x + 3;
+        return z;
     }
 }
 
@@ -43,6 +44,9 @@ public class TestClasses {
 
         // Call the add() method → 5 + 12 = 17
         System.out.println("Sum is: " + at.add());
+
+        Foo foo = new Foo();
+        System.out.println("Sum is: " + foo.go());
     }
 }
 
