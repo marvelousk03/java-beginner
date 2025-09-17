@@ -1,4 +1,4 @@
-package Chap09.Page257;
+package chap09;
 
 // This class contains the main method to run the program
 public class MakeHippo {
@@ -7,7 +7,7 @@ public class MakeHippo {
     public static void main(String[] args) {
 
         // Create a new Hippo object with the name "Buffy"
-        Hippo h = new Hippo("Buffy");
+        Hippo2 h = new Hippo2("Buffy");
 
         // Print the name of the Hippo using the getName() method
         System.out.println(h.getName());
