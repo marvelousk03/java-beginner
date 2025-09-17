@@ -1,4 +1,4 @@
-package Chap09.Page254;
+package chap09;
 
 public class TestHippo {
     public static void main(String[] args) {
