@@ -1,4 +1,4 @@
-package Chap10.Page293;
+package chap10;
 
 public class TestBox {
     private Integer i;
