@@ -1,4 +1,4 @@
-package Chap10.Page287;
+package chap10;
 
 public class Foo6 {
     int x = 12;

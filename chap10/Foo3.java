@@ -1,4 +1,4 @@
-package Chap10.Page287;
+package chap10;
 
 public class Foo3 {
     final int x = 42;  // final must be initialized
