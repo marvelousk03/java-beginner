@@ -17,7 +17,7 @@ class Mini extends Car {
 
     public Mini(int size) {
         this(Color.RED);
-        super(size);  // <-- This line will cause a compile error!
+        //super(size);  // <-- This line will cause a compile error!
     }
 }
 
