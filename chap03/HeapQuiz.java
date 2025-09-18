@@ -1,4 +1,4 @@
-package ch3;
+package chap03;
 
 class HeapQuiz {
   int id = 0;

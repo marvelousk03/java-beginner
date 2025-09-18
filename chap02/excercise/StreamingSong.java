@@ -1,4 +1,4 @@
-package ch2;
+package chap02;
 
 class StreamingSong {
   String title;

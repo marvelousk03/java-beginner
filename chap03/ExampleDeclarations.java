@@ -1,4 +1,4 @@
-package ch3;
+package chap03;
 
 public class ExampleDeclarations {
   void declarations() {

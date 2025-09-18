@@ -13,6 +13,9 @@ public class Boo {
     public Boo(String s, int i) {
         // Constructor that takes a String and an int
     }
+
+    public Boo() {
+    }
 }
 
 //run javac Boo.java SonOfBoo.java
