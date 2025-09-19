@@ -10,7 +10,7 @@ public class TestBox {
     }
 
     public void go() {
-        j = 6;
+        j = i;
 
         System.out.println(j);
         System.out.println(i);
