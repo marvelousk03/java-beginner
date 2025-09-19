@@ -1,4 +1,4 @@
-package Chap10.Page296;
+package chap10;
 
 public class TestFormats {
     public static void main(String[] args) {
