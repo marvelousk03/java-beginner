@@ -1,9 +1,9 @@
-package Chap11.Page315;
+package jadvanced.chap11;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class MockSongs {
+class MockSongs2 {
     public static List<String> getSongStrings() {
         List<String> songs = new ArrayList<>();
         songs.add("somersault");

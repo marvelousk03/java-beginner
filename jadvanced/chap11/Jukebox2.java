@@ -1,8 +1,8 @@
-package Chap11.Page315;
+package jadvanced.chap11;
 
 import java.util.*;
 
-public class Jukebox1 {
+public class Jukebox2 {
     public static void main(String[] args) {
         new Jukebox1().go();
     }
