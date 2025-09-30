@@ -1,4 +1,4 @@
-package Chap10.Page303;
+package chap10;
 
 import static java.lang.Math.*;
 import static java.lang.System.out;

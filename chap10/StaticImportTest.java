@@ -1,4 +1,4 @@
-package Chap10.Page303;
+package chap10;
 
 // Without static imports
 class NoStatic {
