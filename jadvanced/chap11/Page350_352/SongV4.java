@@ -1,4 +1,4 @@
-package Chap11.Page350_352;
+package jadvanced.chap11.Page350_352;
 
 class SongV4 implements Comparable<SongV4> {
     private String title;
