@@ -1,4 +1,4 @@
-package jadvanced.chap11.Page336;
+package jadvanced.chap11.Page344;
 
 class SongV3 implements Comparable<SongV3> {
     private String title;
@@ -28,6 +28,6 @@ class SongV3 implements Comparable<SongV3> {
     }
 
     public String toString() {
-        return title;
+        return title + ": " + artist;
     }
 }

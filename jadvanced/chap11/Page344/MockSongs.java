@@ -1,4 +1,4 @@
-package jadvanced.chap11.Page336;
+package jadvanced.chap11.Page344;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,8 @@ class MockSongs {
         songs.add(new SongV3("cassidy", "grateful dead", 158));
         songs.add(new SongV3("$10", "hitchhiker", 140));
         songs.add(new SongV3("havana", "cabello", 105));
-        songs.add(new SongV3("Cassidy", "grateful dead", 158));
+        songs.add(new SongV3("$10", "hitchhiker", 140)); // ADD this duplicate
+        songs.add(new SongV3("cassidy", "grateful dead", 158)); // DUPLICATE lowercase
         songs.add(new SongV3("50 ways", "simon", 102));
         return songs;
     }
