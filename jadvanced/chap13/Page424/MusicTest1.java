@@ -1,4 +1,4 @@
-package Chap13.Page424;
+package jadvanced.chap13.Page424;
 
 import javax.sound.midi.*;
 
