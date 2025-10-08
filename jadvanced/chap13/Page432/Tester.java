@@ -1,4 +1,4 @@
-package Chap13.Page432;
+package jadvanced.chap13.Page432;
 
 class Foo {
     int getNum() {
