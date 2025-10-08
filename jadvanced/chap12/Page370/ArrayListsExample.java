@@ -1,4 +1,4 @@
-package Chap12.Page370;
+package jadvanced.chap12.Page370;
 
 import java.util.List;
 import java.util.ArrayList;
