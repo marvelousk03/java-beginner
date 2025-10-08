@@ -8,7 +8,8 @@ public class Laundry {
         System.out.println("Starting laundry...");
 
         // For now, we are only throwing PantsException
-        throw new PantsException(); // You can change this line to test other exceptions
+        //throw new PantsException(); // You can change this line to test other exceptions
+        throw new TeeShirtException();
 
         // Example:
         // throw new LingerieException();
