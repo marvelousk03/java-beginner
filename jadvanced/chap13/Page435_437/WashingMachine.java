@@ -1,4 +1,4 @@
-package Chap13.Page435_437;
+package jadvanced.chap13.Page435_437;
 
 // Main class to run the laundry and handle exceptions
 public class WashingMachine {

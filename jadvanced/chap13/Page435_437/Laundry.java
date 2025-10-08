@@ -1,4 +1,4 @@
-package Chap13.Page435_437;
+package jadvanced.chap13.Page435_437;
 
 // Laundry class that might throw clothing-related exceptions
 public class Laundry {
