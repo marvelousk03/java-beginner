@@ -1,4 +1,4 @@
-package Chap13.Page452;
+package jadvanced.chap13.Page452;
 
 import javax.sound.midi.*;
 import static javax.sound.midi.ShortMessage.*;
