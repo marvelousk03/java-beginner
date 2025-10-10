@@ -1,4 +1,4 @@
-package Chap13.Page448;
+package jadvanced.chap13.Page448;
 
 // Import required MIDI classes from javax.sound.midi package
 import javax.sound.midi.*;
