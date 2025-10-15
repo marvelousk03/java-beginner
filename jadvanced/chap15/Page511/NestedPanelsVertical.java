@@ -1,4 +1,4 @@
-package Chap15.Page511;
+package jadvanced.chap15.Page511;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
