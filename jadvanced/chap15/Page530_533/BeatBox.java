@@ -1,4 +1,4 @@
-package Chap15.Page530_533;
+package jadvanced.chap15.Page530_533;
 
 import javax.sound.midi.*;              // For MIDI music functionality
 import javax.swing.*;                   // For creating GUI components like buttons and checkboxes
