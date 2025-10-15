@@ -1,4 +1,4 @@
-package Chap15.Page514;
+package jadvanced.chap15.Page514;
 
 import javax.swing.*;  // Import Swing library for GUI components
 import java.awt.*;
