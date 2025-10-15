@@ -1,4 +1,4 @@
-package Chap15.Page520;
+package jadvanced.chap15.Page520;
 
 import javax.swing.*;
 import java.awt.*;
