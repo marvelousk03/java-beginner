@@ -1,1 +1,3 @@
-What is Java?/A programming language
+What is the purpose of books?/to provide knowledge, entertainment, and a means for personal growth by educating readers, stimulating creativity, and fostering empathy through stories and information.
+What is Java?/A programming language.
+What is Java?/Java is a popular, object-oriented, and multi-platform programming language that runs on billions of devices, including computers, mobile phones, and gaming consoles
