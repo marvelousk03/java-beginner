@@ -1,6 +1,7 @@
-package jadvanced.chap18.Page643;
+package Chap18.Page649;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 // This is the main class to run the program
 public class RyanAndMonicaTest {
@@ -41,16 +42,12 @@ class RyanAndMonicaJob implements Runnable {
         goShopping(amountToSpend); // Try to spend money
     }
 
-    // This simulates the shopping action
+    // Try to spend money using the shared account
     private void goShopping(int amount) {
-        // Check if there is enough money before spending
-        if (account.getBalance() >= amount) {
-            System.out.println(name + " is about to spend");
-            account.spend(amount); // Spend the money
-            System.out.println(name + " finishes spending");
-        } else {
-            System.out.println("Sorry, not enough for " + name);
-        }
+        System.out.println(name + " is about to spend");
+        // Let the BankAccount handle the balance check and deduction
+        account.spend(name, amount);
+        System.out.println(name + " finishes spending");
     }
 }
 
@@ -58,18 +55,18 @@ class RyanAndMonicaJob implements Runnable {
 class BankAccount {
     private int balance = 100; // Starting balance is $100
 
-    // Method to check the current balance
-    public int getBalance() {
-        return balance;
-    }
-
-    // Method to spend money from the account
-    public void spend(int amount) {
-        balance = balance - amount; // Subtract the amount from balance
-
-        // Check if the account went below zero
-        if (balance < 0) {
-            System.out.println("Overdrawn!");
+    // This method is now synchronized, so only one thread can use it at a time
+    public synchronized void spend(String name, int amount) {
+        // Check if there's enough money before spending
+        if (balance >= amount) {
+            balance = balance - amount;
+            // Check if the account is overdrawn (shouldn't happen with this protection)
+            if (balance < 0) {
+                System.out.println("Overdrawn!");
+            }
+        } else {
+            // Not enough money
+            System.out.println("Sorry, not enough for " + name);
         }
     }
 }
