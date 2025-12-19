@@ -65,7 +65,7 @@ public class BeatBoxFinal {
         // open connection to the server
         try {
             // Attempt to connect to the server at localhost on port 4242
-            Socket socket = new Socket("127.0.0.1", 4242);
+            Socket socket = new Socket("192.168.0.20", 4242);
 
             // Create output stream for sending data to server
             out = new ObjectOutputStream(socket.getOutputStream());
@@ -179,81 +179,98 @@ public class BeatBoxFinal {
         frame.pack(); // Resize frame to fit contents
         frame.setVisible(true); // Show the window
     }
-
+/// //////////////////////////////////////////////////////////////
+    // Sets up the MIDI sequencer and prepares it for playback
     private void setUpMidi() {
         try {
-            // Get and open the MIDI sequencer
+            // Get the default MIDI sequencer from the system
             sequencer = MidiSystem.getSequencer();
+
+            // Open the sequencer so it’s ready to use
             sequencer.open();
 
-            // Create a new MIDI sequence with resolution of 4 ticks per beat
+            // Create a new MIDI sequence with a timing resolution of 4 ticks per beat
+            // (PPQ = Pulses Per Quarter note)
             sequence = new Sequence(Sequence.PPQ, 4);
 
-            // Create a new track in the sequence
+            // Create a new track inside the sequence where MIDI events will be added
             track = sequence.createTrack();
 
-            // Set initial tempo (BPM)
+            // Set the initial playback tempo to 120 beats per minute
             sequencer.setTempoInBPM(120);
         } catch (Exception e) {
-            e.printStackTrace(); // Print any errors that occur
+            // Print the stack trace if something goes wrong (e.g., no sequencer available)
+            e.printStackTrace();
         }
     }
 
+    // Builds a new MIDI track based on the current checkbox selections and starts playback
     private void buildTrackAndStart() {
-        ArrayList<Integer> trackList; // this will hold the instruments for each beat
+        ArrayList<Integer> trackList; // Holds the MIDI note values for each instrument per beat
 
-        // Remove the existing track (clear previous notes)
+        // Remove the old track to clear any previously added notes
         sequence.deleteTrack(track);
-        track = sequence.createTrack(); // Create a new empty track
 
-        // Loop through each instrument (row)
+        // Create a fresh, empty track for the new pattern
+        track = sequence.createTrack();
+
+        // Loop through all 16 instruments (rows in the GUI grid)
         for (int i = 0; i < 16; i++) {
             trackList = new ArrayList<>();
-            int key = instruments[i]; // MIDI key for this instrument
+            int key = instruments[i]; // Get the MIDI key (note) assigned to this instrument
 
-            // Loop through 16 beats (columns)
+            // Loop through all 16 beats (columns in the GUI grid)
             for (int j = 0; j < 16; j++) {
-                // Get the checkbox corresponding to this instrument and beat
+                // Find the checkbox corresponding to this instrument and beat
                 JCheckBox jc = checkboxList.get(j + (16 * i));
 
+                // If the checkbox is selected, add the instrument’s key (play sound at this beat)
                 if (jc.isSelected()) {
-                    trackList.add(key); // Add this instrument to the track at this beat
+                    trackList.add(key);
                 } else {
-                    trackList.add(null); // No instrument played at this beat
+                    // Otherwise, no sound on this beat (represented by null)
+                    trackList.add(null);
                 }
             }
 
-            // Create MIDI events from this track list
+            // Convert this instrument’s beat pattern into actual MIDI events
             makeTracks(trackList);
 
-            // Add a controller event to keep beat aligned
+            // Add a controller event to help the sequencer stay in time across instruments
             track.add(makeEvent(CONTROL_CHANGE, 1, 127, 0, 16));
         }
 
-        // Add a program change event to ensure all 16 beats are processed
+        // Add a program change event at the end to signal that all 16 beats are processed
         track.add(makeEvent(PROGRAM_CHANGE, 9, 1, 0, 15));
 
         try {
-            // Load the new sequence into the sequencer
+            // Load the newly built sequence into the sequencer for playback
             sequencer.setSequence(sequence);
 
-            // Loop the sequence indefinitely
+            // Set the sequencer to loop continuously so it repeats indefinitely
             sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY);
 
-            // Set the playback tempo
+            // Set playback speed (120 BPM)
             sequencer.setTempoInBPM(120);
 
-            // Start playback
+            // Start playing the sequence
             sequencer.start();
         } catch (Exception e) {
-            e.printStackTrace(); // Print error if playback fails
+            // Print an error if the sequencer fails to start or load the sequence
+            e.printStackTrace();
         }
     }
-    // Adjusts the tempo of the sequencer by multiplying the current tempo factor with the provided multiplier
+
+    // Adjusts the playback tempo of the sequencer by a given multiplier
+// For example: 1.03 speeds up by 3%, 0.97 slows down by 3%
     private void changeTempo(float tempoMultiplier) {
+        // Get the current tempo factor (1.0 = normal speed)
         float tempoFactor = sequencer.getTempoFactor();
+
+        // Multiply it by the provided value to change the tempo
         sequencer.setTempoFactor(tempoFactor * tempoMultiplier);
     }
+/// ///////////////////////////////////////////////////////////////////////
 
     // Sends the user message and current state of checkboxes (track data) to the server
     private void sendMessageAndTracks() {
